@@ -2,13 +2,13 @@
    <div>
     <h1>文章发表</h1>
     <h3>标题</h3>
-    <Input v-model="value" placeholder="Enter something..." clearable ></Input>
+    <Input v-model="title" placeholder="请填写文章标题" clearable ></Input>
     <h3>分类</h3>
-    <Select v-model="model10" multiple>
-        <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+    <Select v-model="type" multiple>
+        <Option v-for="item in typeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
     </Select>
     <h3>正文</h3>
-    <Input v-model="value5" :autosize="autosize" type="textarea" placeholder="Enter something..."></Input>
+    <Input v-model="content" :autosize="autosize" type="textarea" placeholder="填写文章内容"></Input>
   </div>
 </template>
 <script>
@@ -22,15 +22,19 @@ export default {
 	props: [],
 	data() {
 		return {
-			value: 'Hello World',
-			value5: '',
+			title: '',
+			content: '',
 			autosize: {
 				minRows: 11,
 			},
-			cityList: [
+			typeList: [
 				{
-					value: 'New York',
-					label: 'New York',
+					value: 'Html',
+					label: 'Html',
+				},
+				{
+					value: 'JavaScript',
+					label: 'JavaScript',
 				},
 				{
 					value: 'London',
@@ -53,7 +57,7 @@ export default {
 					label: 'Canberra',
 				},
 			],
-			model10: [],
+			type: [],
 		};
 	},
 };
