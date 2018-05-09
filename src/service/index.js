@@ -5,3 +5,6 @@ export const article_add = (title, type, content) => fetch('post', '/article/art
 
 // 文章列表
 export const article_list = () => fetch('get', '/article/article_list');
+
+// 删除文章article_remove
+export const article_remove = article_id => fetch('post', '/article/article_remove', { article_id });

@@ -12,7 +12,7 @@
 </template>
 <script>
 import { Content, Table, Modal } from 'iview';
-import { article_list } from '../../service';
+import { article_list, article_remove } from '../../service';
 export default {
 	name: 'people-info',
 	components: {
@@ -120,7 +120,7 @@ export default {
 									},
 									on: {
 										click: () => {
-											this.remove(params.index);
+											this.removeArticle(params);
 										},
 									},
 								},
@@ -135,7 +135,7 @@ export default {
 									},
 									on: {
 										click: () => {
-											this.remove(params.index);
+											this.removeArticle(params.row.article_id);
 										},
 									},
 								},
@@ -154,15 +154,13 @@ export default {
       this.See = true;
       this.index = index;
 		},
-		remove(index) {
-			this.ArticleList.splice(index, 1);
+		async removeArticle(article_id) {
+      let res = await article_remove(article_id);
+      if (res.status === 1) {
+        this.ArticleList = res.data;
+      }
 		},
 	},
-	beforeCreate() {},
-	created() {},
-	beforeUpdate() {},
-	updated() {},
-	beforeMount() {},
 	async mounted() {
 		let res = await article_list();
 		if (res.status === 1) {
