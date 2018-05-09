@@ -7,7 +7,6 @@
 </template>
 <script>
 import { Content, Table } from 'iview';
-import { one } from '../service';
 export default {
   name: 'people-info',
 	components: {
@@ -125,9 +124,6 @@ export default {
 	},
 	beforeCreate() {},
 	async created() {
-		// console.log(2222)
-		let res = await one()
-		console.log(res)
 	},
 	beforeUpdate() {},
 	updated() {},

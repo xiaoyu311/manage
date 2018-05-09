@@ -36,7 +36,7 @@ export default async (type = 'GET', url = '', data = {}, method = 'fetch') => {
   }
   const response = fetch(url, requestConfig);
   let res = await Termination(response);
-  // console.log(res)
+  console.log(res)
   if (res.status === 200) {
     return await res.json();
   }
@@ -82,7 +82,7 @@ export default async (type = 'GET', url = '', data = {}, method = 'fetch') => {
 }
 
 const Termination = promise => {
-  return new Promise((resolve, reject) => { 
+  return new Promise((resolve, reject) => {
     promise.then(res => {
       resolve(res);
     });

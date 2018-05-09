@@ -5,10 +5,16 @@
 </template>
 
 <script>
-export default {
-	name: 'App',
-};
+  export default {
+    name: 'App',
+  };
+
 </script>
 
-<style>
+<style <style lang="scss" scoped>
+  #app {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+  }
 </style>
