@@ -1,142 +1,176 @@
 <template>
   <div>
     <Content :style="{padding: '24px', minHeight: '100%', background: '#fff'}">
-      <Table border :columns="columns7" :data="data6"></Table>
+      <Table border :columns="columns7" :data="ArticleList"></Table>
     </Content>
+    <Modal v-model="See">
+      <h3 v-if="index !== undefined">{{ArticleList[index].title}}</h3>
+      <h4 v-if="index !== undefined">{{ArticleList[index].type}}</h4>
+      <h5 v-if="index !== undefined">{{ArticleList[index].content}}</h5>
+    </Modal>
   </div>
 </template>
 <script>
-  import {
-    Content,
-    Table
-  } from 'iview';
-  import {
-    article_list
-  } from '../../service';
-  export default {
-    name: 'people-info',
-    components: {
-      Content,
-      Table,
-    },
-    props: [],
-    data() {
-      return {
-        columns7: [{
-            title: 'Name',
-            key: 'name',
-            render: (h, params) => {
-              return h('div', [
-                h('Icon', {
-                  props: {
-                    type: 'person',
-                  },
-                }),
-                h('strong', params.row.name),
-              ]);
-            },
-          },
-          {
-            title: 'Age',
-            key: 'age',
-          },
-          {
-            title: 'Address',
-            key: 'address',
-          },
-          {
-            title: 'Action',
-            key: 'action',
-            width: 150,
-            align: 'center',
-            render: (h, params) => {
-              return h('div', [
-                h(
-                  'Button', {
-                    domProps: {
-                      class: 'ivu-btn ivu-btn-primary ivu-btn-small',
-                      size: 'small',
-                      shape: 'circle',
-                    },
-                    style: {
-                      marginRight: '5px',
-                    },
-                    on: {
-                      click: () => {
-                        this.show(params.index);
-                      },
-                    },
-                  },
-                  'View'
-                ),
-                h(
-                  'Button', {
-                    props: {
-                      type: 'error',
-                      size: 'small',
-                    },
-                    on: {
-                      click: () => {
-                        this.remove(params.index);
-                      },
-                    },
-                  },
-                  'Delete'
-                ),
-              ]);
-            },
-          },
-        ],
-        data6: [{
-            name: 'John Brown',
-            age: 18,
-            address: 'New York No. 1 Lake Park',
-          },
-          {
-            name: 'Jim Green',
-            age: 24,
-            address: 'London No. 1 Lake Park',
-          },
-          {
-            name: 'Joe Black',
-            age: 30,
-            address: 'Sydney No. 1 Lake Park',
-          },
-          {
-            name: 'Jon Snow',
-            age: 26,
-            address: 'Ottawa No. 2 Lake Park',
-          },
-        ],
-      };
-    },
-    computed: {},
-    methods: {
-      show(index) {
-        // console.log(this)
-        Modal.info({
-          title: 'User Info',
-          content: `Name：${this.data6[index].name}<br>Age：${this.data6[index].age}<br>Address：${this.data6[index]
-					.address}`,
-        });
-      },
-      remove(index) {
-        this.data6.splice(index, 1);
-      },
-    },
-    beforeCreate() {},
-    created() {},
-    beforeUpdate() {},
-    updated() {},
-    beforeMount() {},
-    async mounted() {
-      let res = await article_list();
-      console.log(res);
-    },
-  };
-
+import { Content, Table, Modal } from 'iview';
+import { article_list } from '../../service';
+export default {
+	name: 'people-info',
+	components: {
+		Content,
+    Table,
+    Modal
+	},
+//	props: [],
+	data() {
+		return {
+      See: false, // 查看弹窗显示
+      index: undefined, // 模态框
+			columns7: [
+				{
+					title: '标题',
+					key: 'title',
+					render: (h, params) => {
+						return h(
+							'h3',
+							{
+								style: {
+									overflow: 'hidden',
+									textOverflow: 'ellipsis',
+									whiteSpace: 'nowrap',
+								},
+							},
+							params.row.title
+						);
+					},
+				},
+				{
+					title: '类型',
+					key: 'type',
+					render: (h, params) => {
+						let type = '';
+						params.row.type.forEach(item => {
+							if (!type) {
+								type = item;
+							} else {
+								type = type + ',' + item;
+							}
+						});
+						return h(
+							'h4',
+							{
+								style: {
+									overflow: 'hidden',
+									textOverflow: 'ellipsis',
+									whiteSpace: 'nowrap',
+								},
+							},
+							type
+						);
+					},
+				},
+				{
+					title: '内容',
+					key: 'content',
+					render: (h, params) => {
+						return h('h5',
+            {
+              style: {
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+                whiteSpace: 'nowrap'
+              }
+            }, params.row.content);
+					},
+				},
+				{
+					title: '操作',
+					key: 'action',
+					width: 150,
+					align: 'center',
+					render: (h, params) => {
+						// console.log(params);
+						return h('div', [
+							h(
+								'a',
+								{
+									props: {
+										size: 'small',
+										shape: 'circle',
+									},
+									style: {
+										marginRight: '5px',
+									},
+									on: {
+										click: () => {
+											this.SeeInfo(params.index);
+										},
+									},
+								},
+								'查看'
+							),
+							h(
+								'a',
+								{
+									props: {
+										type: 'error',
+										size: 'small',
+									},
+									style: {
+										marginRight: '5px',
+									},
+									on: {
+										click: () => {
+											this.remove(params.index);
+										},
+									},
+								},
+								'编辑'
+							),
+							h(
+								'a',
+								{
+									props: {
+										type: 'error',
+										size: 'small',
+									},
+									on: {
+										click: () => {
+											this.remove(params.index);
+										},
+									},
+								},
+								'删除'
+							),
+						]);
+					},
+				},
+			],
+			ArticleList: [],
+		};
+	},
+	computed: {},
+	methods: {
+		SeeInfo(index) {
+      this.See = true;
+      this.index = index;
+		},
+		remove(index) {
+			this.ArticleList.splice(index, 1);
+		},
+	},
+	beforeCreate() {},
+	created() {},
+	beforeUpdate() {},
+	updated() {},
+	beforeMount() {},
+	async mounted() {
+		let res = await article_list();
+		if (res.status === 1) {
+			this.ArticleList = res.data;
+		}
+	},
+};
 </script>
 <style lang="scss" scoped>
-
 
 </style>

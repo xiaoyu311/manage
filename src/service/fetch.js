@@ -36,7 +36,6 @@ export default async (type = 'GET', url = '', data = {}, method = 'fetch') => {
   }
   const response = fetch(url, requestConfig);
   let res = await Termination(response);
-  console.log(res)
   if (res.status === 200) {
     return await res.json();
   }
