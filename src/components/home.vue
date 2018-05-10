@@ -14,12 +14,12 @@
               Item 2
             </MenuItem>
             <MenuItem name="3">
-              <Icon type="ios-analytics"></Icon>
-              Item 3
+              <Icon type="sad"></Icon>
+              登录
             </MenuItem>
             <MenuItem name="4">
               <Icon type="ios-paper"></Icon>
-              Item 4
+              注册
             </MenuItem>
           </div>
         </Menu>
@@ -214,7 +214,7 @@
       },
       // 点击查看不同的数据
       seeInfo(name) {
-        this.$router.push(`/${name}`);
+        this.$router.push(`/home/${name}`);
       }
     },
   };

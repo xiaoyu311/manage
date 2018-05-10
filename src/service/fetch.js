@@ -19,13 +19,13 @@ export default async (type = 'GET', url = '', data = {}, method = 'fetch') => {
 
   // if (window.fetch && method == 'fetch') {
   let requestConfig = {
-    // credentials: 'include',
+    credentials: 'include',
     method: type,
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    // mode: "cors",
+    mode: "cors",
     // cache: "force-cache"
   }
 
@@ -36,6 +36,7 @@ export default async (type = 'GET', url = '', data = {}, method = 'fetch') => {
   }
   const response = fetch(url, requestConfig);
   let res = await Termination(response);
+  console.log(res)
   if (res.status === 200) {
     return await res.json();
   }
