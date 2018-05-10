@@ -11,3 +11,6 @@ export const article_remove = article_id => fetch('post', '/article/article_remo
 
 // 注册
 export const signup = (username, password) => fetch('post', '/sign/signup', { username, password });
+
+// 用户信息
+export const info = () => fetch('get', '/user/info');

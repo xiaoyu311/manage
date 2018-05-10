@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import App from '../App';
 import home from '@/components/home';
 import login from '@/components/login';
-import peopleInfo from '@/components/people-info';
+import peopleInfo from '@/components/user/people-info';
 /**
  * 文章管理相关
  */
