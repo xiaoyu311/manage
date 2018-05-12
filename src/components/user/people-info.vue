@@ -71,7 +71,7 @@
             },
           },
           {
-            title: '搜藏文章',
+            title: '收藏文章',
             key: 'collections',
             render: (h, params) => {
               let collections = '';

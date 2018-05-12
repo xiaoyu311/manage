@@ -26,9 +26,9 @@
       </Header>
       <Layout>
         <Sider hide-trigger :style="{background: '#fff'}">
-          <Menu style="min-height: 100%;" @on-select="seeInfo" active-name="1-2" theme="dark" width="auto" :open-names="['1']">
+          <Menu style="min-height: 100%;" @on-select="seeInfo" active-name="index" theme="dark" width="auto" >
             <MenuGroup>
-              <MenuItem name="1">
+              <MenuItem name="index">
               <Icon type="document-text"></Icon>
               首页
               </MenuItem>
@@ -46,7 +46,6 @@
                 文章管理
               </template>
               <MenuItem name="articleadd">文章添加</MenuItem>
-              <MenuItem name="2-2">编辑文章</MenuItem>
               <MenuItem name="articleinfo">文章信息</MenuItem>
             </Submenu>
             <Submenu name="3">

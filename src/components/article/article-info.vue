@@ -18,7 +18,8 @@
   } from 'iview';
   import {
     article_list,
-    article_remove
+    article_remove,
+    collection
   } from '../../service';
   export default {
     name: 'people-info',
@@ -179,9 +180,11 @@
     },
     computed: {},
     methods: {
-      SeeInfo(index) {
-        this.See = true;
-        this.index = index;
+      async SeeInfo(index) {
+        let res = await collection(10);
+        console.log(res);
+        // this.See = true;
+        // this.index = index;
       },
       async removeArticle(article_id) {
         let res = await article_remove(article_id);

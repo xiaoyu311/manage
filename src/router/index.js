@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import App from '../App';
 import home from '@/components/home';
+import index from '@/components/home/index';
 import login from '@/components/login';
 import peopleInfo from '@/components/user/people-info';
 /**
@@ -15,13 +16,16 @@ Vue.use(Router);
 const routes = [
   {
     path: '/',
-    redirect: '/login',
+    redirect: '/home/index',
     component: App,
     children: [
       {
         path: 'home',
         component: home,
         children: [{
+          path: 'index',
+          component: index
+        }, {
           path: 'people',
           component: peopleInfo
         }, {
@@ -35,7 +39,8 @@ const routes = [
       {
         path: 'login',
         component: login
-      }
+      },
+
     ]
   }
 ];
