@@ -71,6 +71,30 @@
             },
           },
           {
+            title: '搜藏文章',
+            key: 'collections',
+            render: (h, params) => {
+              let collections = '';
+              params.row.collections.forEach(item => {
+                if (!collections) {
+                  collections = item;
+                } else {
+                  collections = collections + ',' + item;
+                }
+              });
+              return h(
+                'h4', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }
+                },
+                collections ? collections : '暂无收藏'
+              );
+            },
+          },
+          {
             title: '操作',
             key: 'action',
             width: 150,

@@ -102,6 +102,19 @@
             },
           },
           {
+            title: 'star',
+            key: 'star',
+            render: (h, params) => {
+              return h('h5', {
+                style: {
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap'
+                }
+              }, params.row.star);
+            },
+          },
+          {
             title: '操作',
             key: 'action',
             width: 150,
