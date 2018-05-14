@@ -88,6 +88,7 @@
     Button,
     MenuGroup,
   } from 'iview';
+  import { home } from '../service';
   export default {
     components: {
       Layout,
@@ -197,6 +198,10 @@
           },
         ],
       };
+    },
+    async created() {
+      // let res = await home();
+      // console.log(res)
     },
     computed: {},
     methods: {
