@@ -10,7 +10,7 @@ export const article_list = () => fetch('get', '/article/article_list');
 export const article_remove = article_id => fetch('post', '/article/article_remove', { article_id });
 
 // 注册
-export const signup = (username, password) => fetch('post', '/sign/signup', { username, password });
+export const signup = (loginname, password) => fetch('post', '/sign/signup', { loginname, password });
 
 // 用户信息
 export const info = () => fetch('get', '/user/info');

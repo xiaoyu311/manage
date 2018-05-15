@@ -38,8 +38,8 @@
           minRows: 11,
         },
         typeList: [{
-            value: 'Html',
-            label: 'Html',
+            value: 'job',
+            label: 'job',
           },
           {
             value: 'JavaScript',
@@ -79,7 +79,7 @@
         if (!title) return;
         if (!type.length) return;
         if (!content) return;
-        let res = await article_add(title, type, content);
+        let res = await article_add(title, type[0], content);
         console.log(res);
       }
     }
