@@ -52,7 +52,7 @@
           },
           {
             title: '作者id',
-            key: 'user_id',
+            key: 'author_id',
             align: 'center',
             render: (h, params) => {
               return h(
@@ -63,24 +63,58 @@
                     whiteSpace: 'nowrap',
                   },
                 },
-                params.row.user_id
+                params.row.author_id
               );
             },
           },
           {
             title: '作者',
-            key: 'username',
+            key: 'loginname',
             align: 'center',
             render: (h, params) => {
               return h(
-                'h4', {
+                'h3', {
                   style: {
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                   },
                 },
-                params.row.username
+                params.row.author.loginname
+              );
+            },
+          },
+          {
+            title: '类型',
+            key: 'tab',
+            align: 'center',
+            render: (h, params) => {
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.tab
+              );
+            },
+          },
+          {
+            title: '内容',
+            key: 'content',
+            align: 'center',
+            render: (h, params) => {
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.content
               );
             },
           },
@@ -89,69 +123,16 @@
             key: 'title',
             align: 'center',
             render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.title);
-            },
-          },
-          {
-            title: '类型',
-            key: 'type',
-            align: 'center',
-            render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.type);
-            },
-          },
-          {
-            title: '内容',
-            key: 'content',
-            align: 'center',
-            render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.content);
-            },
-          },
-          {
-            title: '关注量',
-            key: 'visit_count',
-            align: 'center',
-            render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.visit_count);
-            },
-          },
-          {
-            title: '回复量',
-            key: 'reply_count',
-            align: 'center',
-            render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.reply_count);
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.title
+              );
             },
           },
           {
@@ -159,55 +140,84 @@
             key: 'last_reply_at',
             align: 'center',
             render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.last_reply_at);
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.last_reply_at
+              );
             },
           },
           {
-            title: '知否置顶',
-            key: 'top',
+            title: '精华',
+            key: 'good',
             align: 'center',
             render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.top);
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.good
+              );
             },
           },
           {
-            title: '作者图标',
+            title: '置顶',
+            key: 'reply_count',
+            align: 'center',
+            render: (h, params) => {
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.reply_count
+              );
+            },
+          },
+          {
+            title: '点赞数量',
+            key: 'create_at',
+            align: 'center',
+            render: (h, params) => {
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.create_at
+              );
+            },
+          },
+          {
+            title: '头像地址',
             key: 'avatar_url',
             align: 'center',
             render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.avatar_url);
-            },
-          },
-          {
-            title: '回复人图标',
-            key: 'last_reply_url',
-            align: 'center',
-            render: (h, params) => {
-              return h('h5', {
-                style: {
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
-                }
-              }, params.row.last_reply_url);
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.author.avatar_url
+              );
             },
           },
           {

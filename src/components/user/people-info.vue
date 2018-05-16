@@ -23,8 +23,8 @@
     data() {
       return {
         columns7: [{
-            title: '用户名',
-            key: 'username',
+            title: '用户id',
+            key: 'author_id',
             render: (h, params) => {
               return h(
                 'h3', {
@@ -34,23 +34,23 @@
                     whiteSpace: 'nowrap',
                   }
                 },
-                params.row.username
+                params.row.author_id
               );
             },
           },
           {
-            title: 'user_id',
-            key: 'id',
+            title: '用户名',
+            key: 'loginname',
             render: (h, params) => {
               return h(
-                'h4', {
+                'h3', {
                   style: {
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                   }
                 },
-                params.row.user_id
+                params.row.loginname
               );
             },
           },
@@ -59,7 +59,7 @@
             key: 'password',
             render: (h, params) => {
               return h(
-                'h4', {
+                'h3', {
                   style: {
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -71,26 +71,66 @@
             },
           },
           {
-            title: '收藏文章',
-            key: 'collections',
+            title: '头像链接',
+            key: 'avatar_url',
             render: (h, params) => {
-              let collections = '';
-              params.row.collections.forEach(item => {
-                if (!collections) {
-                  collections = item;
-                } else {
-                  collections = collections + ',' + item;
-                }
-              });
               return h(
-                'h4', {
+                'h3', {
                   style: {
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                   }
                 },
-                collections ? collections : '暂无收藏'
+                params.row.avatar_url
+              );
+            },
+          },
+          {
+            title: '创建时间',
+            key: 'create_at',
+            render: (h, params) => {
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }
+                },
+                params.row.create_at
+              );
+            },
+          },
+          {
+            title: '回复的话题',
+            key: 'recent_replies',
+            render: (h, params) => {
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }
+                },
+                params.row.recent_replies
+              );
+            },
+          },
+          {
+            title: '发表的话题',
+            key: 'recent_topics',
+            render: (h, params) => {
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }
+                },
+                params.row.recent_topics
               );
             },
           },

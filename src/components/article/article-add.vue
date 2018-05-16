@@ -4,7 +4,7 @@
     <h3>标题</h3>
     <Input v-model="title" placeholder="请填写文章标题" clearable />
     <h3>分类</h3>
-    <Select v-model="type" multiple>
+    <Select v-model="type">
       <Option v-for="item in typeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
     </Select>
     <h3>正文</h3>
@@ -66,7 +66,7 @@
             label: 'Canberra',
           },
         ],
-        type: [],
+        type: '',
       };
     },
     methods: {
@@ -79,7 +79,7 @@
         if (!title) return;
         if (!type.length) return;
         if (!content) return;
-        let res = await article_add(title, type[0], content);
+        let res = await article_add(title, type, content);
         console.log(res);
       }
     }
