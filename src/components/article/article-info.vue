@@ -309,7 +309,10 @@
         // this.index = index;
       },
       async removeArticle(article_id) {
-        let res = await article_remove(article_id);
+        console.log(article_id)
+
+        // let res = await article_remove(article_id);
+        let res = await collection(article_id);
         if (res.status === 1) {
           this.ArticleList = res.data;
         }

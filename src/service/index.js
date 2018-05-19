@@ -16,6 +16,6 @@ export const signup = (loginname, password) => fetch('post', '/sign/signup', { l
 export const info = () => fetch('get', '/user/info');
 
 // 文章收藏
-export const collection = article_id => fetch('get', '/article/collection', { article_id });
+export const collection = article_id => fetch('post', '/article/collection', { article_id });
 
 export const home = () => fetch('get', '/');

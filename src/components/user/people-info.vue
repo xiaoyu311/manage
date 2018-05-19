@@ -24,7 +24,7 @@
       return {
         columns7: [{
             title: '用户id',
-            key: 'author_id',
+            key: 'user_id',
             render: (h, params) => {
               return h(
                 'h3', {
@@ -34,7 +34,7 @@
                     whiteSpace: 'nowrap',
                   }
                 },
-                params.row.author_id
+                params.row.user_id
               );
             },
           },
