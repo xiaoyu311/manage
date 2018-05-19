@@ -85,6 +85,23 @@
             },
           },
           {
+            title: '创建时间',
+            key: 'create_at',
+            align: 'center',
+            render: (h, params) => {
+              return h(
+                'h3', {
+                  style: {
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  },
+                },
+                params.row.create_at
+              );
+            },
+          },
+          {
             title: '类型',
             key: 'tab',
             align: 'center',
@@ -182,13 +199,13 @@
                     whiteSpace: 'nowrap',
                   },
                 },
-                params.row.reply_count
+                params.row.top
               );
             },
           },
           {
             title: '点赞数量',
-            key: 'create_at',
+            key: 'visit_count',
             align: 'center',
             render: (h, params) => {
               return h(
@@ -199,7 +216,7 @@
                     whiteSpace: 'nowrap',
                   },
                 },
-                params.row.create_at
+                params.row.visit_count
               );
             },
           },

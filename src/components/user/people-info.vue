@@ -103,38 +103,6 @@
             },
           },
           {
-            title: '回复的话题',
-            key: 'recent_replies',
-            render: (h, params) => {
-              return h(
-                'h3', {
-                  style: {
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }
-                },
-                params.row.recent_replies
-              );
-            },
-          },
-          {
-            title: '发表的话题',
-            key: 'recent_topics',
-            render: (h, params) => {
-              return h(
-                'h3', {
-                  style: {
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                  }
-                },
-                params.row.recent_topics
-              );
-            },
-          },
-          {
             title: '操作',
             key: 'action',
             width: 150,
