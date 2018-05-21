@@ -4,9 +4,14 @@
       <Table border :columns="columns7" :data="ArticleList"></Table>
     </Content>
     <Modal v-model="See">
-      <h3 v-if="index !== undefined">{{ArticleList[index].title}}</h3>
-      <h4 v-if="index !== undefined">{{ArticleList[index].type}}</h4>
-      <h5 v-if="index !== undefined">{{ArticleList[index].content}}</h5>
+      <h4 v-if="See">标题</h4>
+      <Input v-model="title" placeholder="Enter something..." clearable></Input>
+      <h4 v-if="See">类型</h4>
+      <Select v-model="type">
+        <Option v-for="item in typeList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+      </Select>
+      <h4 v-if="See">内容</h4>
+      <Input v-model="content" placeholder="Enter something..." clearable></Input>
     </Modal>
   </div>
 </template>
@@ -14,7 +19,10 @@
   import {
     Content,
     Table,
-    Modal
+    Modal,
+    Input,
+    Select,
+    Option
   } from 'iview';
   import {
     article_list,
@@ -26,13 +34,48 @@
     components: {
       Content,
       Table,
-      Modal
+      Modal,
+      Input,
+      Select,
+      Option
     },
     //	props: [],
     data() {
       return {
         See: false, // 查看弹窗显示
         index: undefined, // 模态框
+        title: '', // 模态框标题默认空字符串
+        content: '', // 模态框内容默认空字符串
+        typeList: [{
+            value: 'job',
+            label: 'job',
+          },
+          {
+            value: 'JavaScript',
+            label: 'JavaScript',
+          },
+          {
+            value: 'London',
+            label: 'London',
+          },
+          {
+            value: 'Sydney',
+            label: 'Sydney',
+          },
+          {
+            value: 'Ottawa',
+            label: 'Ottawa',
+          },
+          {
+            value: 'Paris',
+            label: 'Paris',
+          },
+          {
+            value: 'Canberra',
+            label: 'Canberra',
+          },
+        ],
+        type: '',
         columns7: [{
             title: '文章id',
             key: 'article_id',
@@ -113,7 +156,7 @@
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                   },
-                },  
+                },
                 params.row.tab
               );
             },
@@ -302,7 +345,12 @@
     },
     computed: {},
     methods: {
-      SeeShow() {
+      SeeShow(params) {
+        console.log(params)
+        let index = params.index;
+        this.title = this.ArticleList[index].title;
+        this.type = this.ArticleList[index].type;
+        this.content = this.ArticleList[index].content;
         this.See = true;
       },
       // 文章收藏
