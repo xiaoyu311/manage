@@ -113,7 +113,7 @@
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                   },
-                },
+                },  
                 params.row.tab
               );
             },
@@ -256,11 +256,11 @@
                     },
                     on: {
                       click: () => {
-                        this.SeeInfo(params.index);
+                        this.collect(params.row.article_id);
                       },
                     },
                   },
-                  '查看'
+                  '收藏'
                 ),
                 h(
                   'a', {
@@ -273,7 +273,7 @@
                     },
                     on: {
                       click: () => {
-                        this.removeArticle(params);
+                        this.SeeShow(params);
                       },
                     },
                   },
@@ -302,22 +302,24 @@
     },
     computed: {},
     methods: {
-      async SeeInfo(index) {
-        let res = await collection(10);
-        console.log(res);
-        // this.See = true;
-        // this.index = index;
+      SeeShow() {
+        this.See = true;
       },
+      // 文章收藏
+      async collect(article_id) {
+        let res = await collection(article_id);
+        console.log(res);
+      },
+      // 文章删除
       async removeArticle(article_id) {
         console.log(article_id)
-
-        // let res = await article_remove(article_id);
-        let res = await collection(article_id);
+        let res = await article_remove(article_id);
         if (res.status === 1) {
           this.ArticleList = res.data;
         }
       },
     },
+    // 文章列表
     async mounted() {
       let res = await article_list();
       if (res.status === 1) {

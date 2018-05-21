@@ -47,6 +47,7 @@
               </template>
               <MenuItem name="articleadd">文章添加</MenuItem>
               <MenuItem name="articleinfo">文章信息</MenuItem>
+              <MenuItem name="collectionlist">收藏列表</MenuItem>
             </Submenu>
             <Submenu name="3">
               <template slot="title">

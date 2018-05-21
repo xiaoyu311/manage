@@ -18,4 +18,7 @@ export const info = () => fetch('get', '/user/info');
 // 文章收藏
 export const collection = article_id => fetch('post', '/article/collection', { article_id });
 
+// 文章收藏列表
+export const collection_list = () => fetch('get', '/article/collection_list');
+
 export const home = () => fetch('get', '/');

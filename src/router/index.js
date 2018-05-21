@@ -10,6 +10,7 @@ import peopleInfo from '@/components/user/people-info';
  */
 import articleAdd from '@/components/article/article-add';
 import articleInfo from '@/components/article/article-info';
+import collectionList from '@/components/article/collection-list';
 
 Vue.use(Router);
 
@@ -34,6 +35,9 @@ const routes = [
         }, {
           path: 'articleinfo',
           component: articleInfo
+        }, {
+          path: 'collectionlist',
+          component: collectionList
         }]
       },
       {
