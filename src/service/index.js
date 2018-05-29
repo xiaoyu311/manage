@@ -21,4 +21,11 @@ export const collection = article_id => fetch('post', '/article/collection', { a
 // 文章收藏列表
 export const collection_list = () => fetch('get', '/article/collection_list');
 
+// 评论
+export const replies = (content, Reply_id) => fetch('post', '/reply/article/1/replies', {
+  content,
+  Reply_id
+});
+
+
 export const home = () => fetch('get', '/');
